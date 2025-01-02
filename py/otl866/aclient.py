@@ -243,7 +243,7 @@ class AClient:
         temp = res.replace("Result: ", "")
 
         # strip the Z
-        temp = temp.replace(" pZ", "")
+        temp = temp.replace(" Z", "")
 
         # remove the \r\n's
         temp = temp.replace("\r","")

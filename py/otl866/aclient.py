@@ -237,16 +237,17 @@ class AClient:
         CMD>
         '''
 
-        temp = res.replace("Result:", "")
+        # Find the colon,
+        temp = res.replace("Result: ", "")
 
         # remove the \r\n's
-        temp = temp.replace("\r\n","")
+        temp = temp.replace("\r","")
+        temp = temp.replace("\n","")
 
-        forward = temp.split(" ")
+        temp = temp.split(" ")
+        temp.reverse()
 
-        reverse = forward.reverse()
-
-        final_str = "".join(reverse)
+        final_str = "".join(temp)
 
         return int(final_str, base=16)
 

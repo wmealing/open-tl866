@@ -150,8 +150,14 @@ class Bitbang(aclient.AClient):
     def io_r(self):
         '''read ZIF pins'''
         ret = self.result_zif(self.cmd('Z'))
+
+        print("io_r - ret: |" ret "|" )
+        print("io_r - io_tri_cache: " self.io_tri_cache )
+
         if self.cache_check and self.io_w_cache is not None and self.io_tri_cache is not None:
             mask = 0xFFFFFFFFFF ^ self.io_tri_cache
+            print("io_r - mask: " mask )
+            print("R&M: " (ret & mask) "I&M:" (self.io_w_cache & mask))
             assert (ret & mask) == (self.io_w_cache & mask)
         return ret
 

@@ -237,11 +237,13 @@ class AClient:
         CMD>
         '''
 
+        print(f"Original: {res}")
+
         # Find the colon,
         temp = res.replace("Result: ", "")
 
         # strip the Z
-        temp = temp.replace(" Z", "")
+        temp = temp.replace(" pZ", "")
 
         # remove the \r\n's
         temp = temp.replace("\r","")
@@ -251,6 +253,8 @@ class AClient:
         temp.reverse()
 
         final_str = "".join(temp)
+
+        print(f"Final: {final_str}")
 
         return int(final_str, base=16)
 

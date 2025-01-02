@@ -237,17 +237,18 @@ class AClient:
         CMD>
         '''
 
-        # Discard everything before the first :
-        pos = res.find(":")
+        temp = res.replace("Result:", "")
 
-        temp = res[ pos + 1:]
-
-        # replace all the spaces with nothing
-        temp = temp.replace(" ", "")
-
-        # strip off that last \r\n
+        # remove the \r\n's
         temp = temp.replace("\r\n","")
-        return int(temp, base=16)
+
+        forward = temp.split(" ")
+
+        reverse = forward.reverse()
+
+        final_str = "".join(reverse)
+
+        return int(final_str, base=16)
 
     def zif_str(self, val):
         '''

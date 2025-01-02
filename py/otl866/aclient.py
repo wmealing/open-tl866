@@ -250,7 +250,7 @@ class AClient:
         temp = temp.replace("\n","")
 
         temp = temp.split(" ")
-        temp.reverse()
+        #temp.reverse()
 
         final_str = "".join(temp)
 

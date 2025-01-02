@@ -232,14 +232,22 @@ class AClient:
 
         ZIF output is LSB first
 
-         Z
-        0000000000
+        Z
+        \n\r\nResult: CF 8E 00 60 00\r\n
         CMD>
         '''
-        # skip space Z \r \n
-        i = 0
-        while res[i] != '\n': i += 1
-        return int(res[i:], base=16)
+
+        # Discard everything before the first :
+        pos = res.find(":")
+
+        temp = res[ pos + 1:]
+
+        # replace all the spaces with nothing
+        temp = temp.replace(" ", "")
+
+        # strip off that last \r\n
+        temp = temp.replace("\r\n","")
+        return int(temp, base=16)
 
     def zif_str(self, val):
         '''
